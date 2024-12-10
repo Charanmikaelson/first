@@ -1,176 +1,151 @@
-{% extends "base.html" %}
-{% block head %}
-<title>Event Manager - About</title>
-
-<!-- Include Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ8vJ6f9Do1H2Gb82L5k9g2ImQbb27+oS9lGocpSAwR7CmOFS1+a+1xaXYK9" crossorigin="anonymous">
-
-<!-- Google Fonts: Marvel-inspired fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap" rel="stylesheet">
-
-<style>
-        /* Basic reset */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bangers&display=swap" rel="stylesheet">
+    <style>
         body {
-        margin: 0;
-        font-family: 'Russo One', sans-serif; /* Space-inspired font */
-        background-color: #1a1a1a; /* Dark background */
-        color: #f0f0f0; /* Light text for contrast */
-        background-image: url('https://source.unsplash.com/1920x1080/?galaxy'); /* Galaxy background */
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    /* Flexbox layout */
-    .wrapper {
-        display: flex;
-        height: 100vh;
-    }
-    /* Sidebar Styling */
-   
-
-  /* Sidebar Styling */
-.sidebar {
-    width: 100%; /* Full width to act like a nav bar */
-    background-color: rgba(128, 0, 128, 0.9); /* Violet color with transparency */
-    color: #f0f0f0;
-    display: flex;
-    justify-content: space-around; /* Space out links evenly */
-    align-items: center; /* Center items vertically */
-    position: fixed; /* Fix the position at the bottom */
-    bottom: 0; /* Align at the bottom of the page */
-    padding: 10px 0; /* Add vertical padding */
-    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.6); /* Shadow for better visibility */
-}
-
-/* Sidebar Title */
-.sidebar h2 {
-    color: #e0b3ff; /* Light violet to stand out */
-    font-size: 1.8rem;
-    margin: 0 20px; /* Add space around the title */
-}
-
-/* Links inside the sidebar */
-.sidebar a {
-    color: #f0f0f0;
-    text-decoration: none;
-    width: 50px; /* Set the width to be the same as the height */
-    height: 50px; /* Set the height to be circular */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%; /* Circular shape */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-    font-size: 1.2rem; /* Adjust font size */
-}
-
-.sidebar a:hover {
-    background-color: #e0b3ff; /* Light violet for hover */
-    color: #1a1a1a; /* Contrast text on hover */
-}
-
-/* Additional styling for responsive design if needed */
-@media (max-width: 768px) {
-    .sidebar {
-        flex-direction: row; /* Keep links horizontal on smaller screens */
-        padding: 5px 0; /* Adjust padding */
-    }
-
-    .sidebar a {
-        width: 40px; /* Adjust the size for smaller screens */
-        height: 40px; /* Adjust the size for smaller screens */
-    }
-}
-
-
-    .content {
-        flex: 1;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent content background */
-        overflow-y: auto;
-    }
-
-    h1, h2, h3, p {
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Subtle shadow */
-    }
-
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-family: 'Press Start 2P', cursive; /* Retro comic font */
-    }
-
-
-    /* Map styles */
-    .map-container {
-        margin-top: 30px;
-        text-align: center;
-    }
-
-    .map {
-        width: 100%;
-        height: 400px;
-        max-width: 800px;
-        margin: 0 auto;
-        border: 3px solid #ffd700; /* Gold border */
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    }
-
-    @media (max-width: 768px) {
-        .sidebar {
-            width: 200px;
+            font-family: 'Orbitron', sans-serif;
+            background: url('https://source.unsplash.com/1920x1080/?events,party') center/cover fixed;
+            color: #f2f2f2;
+            margin: 0;
+            padding: 0;
         }
 
-        h1, h2 {
-            font-size: 1.5rem;
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            background: rgba(0, 123, 255, 0.8);
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .map {
-            height: 300px;
+        .navbar a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
-        p {
-            font-size: 1rem;
+        .navbar a:hover {
+            color: #ffcc00;
+            text-shadow: 0 0 5px #ffcc00;
         }
-    }
-</style>
-{% endblock %}
 
-{% block body %}
-<div class="wrapper">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h2>Hotel Manager</h2>
-        <a href="{{ url_for('Home_page') }}" aria-label="Navigate to Home">Home</a>
-        <a href="{{ url_for('manage_events') }}" aria-label="Manage Events">Customer</a>
-        <a href="{{ url_for('about') }}" aria-label="About the Event Manager">About</a>
-        <a href="/" aria-label="Exit Application">Exit</a>
+        .container {
+            margin: 80px auto 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            color: #ff0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Events grid */
+        .events-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: left;
+            width: 300px;
+            padding: 20px;
+            color: #333;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .event-card:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 123, 255, 0.8);
+            color: #fff;
+        }
+
+        .event-card h3 {
+            margin-top: 0;
+            color: #ff0000;
+        }
+
+        .event-card p {
+            margin: 5px 0;
+        }
+
+        .event-card button {
+            background: #ffcc00;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .event-card button:hover {
+            background: #ffdd33;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold;">Back to Main Page</a>
+    </div>
+    <div class="navbar">
+        <a href="{{ url_for('Home_page') }}">Home</a>
+        <a href="{{ url_for('manage_events') }}">Customer Details</a>
+        <a href="{{ url_for('about') }}">Upcoming Events</a>
+ 
     </div>
 
-    <!-- Content Section -->
-    <div class="content">
-        <h1>About Us</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit animi officiis provident praesentium. Voluptatem dolor iusto accusamus, aliquam facere voluptate obcaecati sit, doloremque provident consectetur aspernatur laboriosam eum fugit?</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos officiis asperiores laborum tempore dolore perferendis veniam repellendus quae temporibus obcaecati? Veniam provident natus nulla voluptate autem eos exercitationem facilis ullam?</p>
-       
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit animi officiis provident praesentium. Voluptatem dolor iusto accusamus, aliquam facere voluptate obcaecati sit, doloremque provident consectetur aspernatur laboriosam eum fugit?</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos officiis asperiores laborum tempore dolore perferendis veniam repellendus quae temporibus obcaecati? Veniam provident natus nulla voluptate autem eos exercitationem facilis ullam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit animi officiis provident praesentium. Voluptatem dolor iusto accusamus, aliquam facere voluptate obcaecati sit, doloremque provident consectetur aspernatur laboriosam eum fugit?</p>
-        <!-- Map Section -->
-       
-        <div class="card">
-            <h2 class="card-title">Robert F. Mager</h2>
-            <p class="card-subtitle">Mastering Instructional Design</p>
-            <ul class="card-content">
-              <li><strong>Full Name:</strong> Robert F. Mager</li>
-              <li><strong>Known For:</strong> Behavioral Objectives</li>
-              <li>
-                <strong>Key Work:</strong> Author of the book <i>“Preparing Instructional Objectives”</i>
-              </li>
-              <li><strong>Contribution:</strong> Revolutionized training methods with clear objectives.</li>
-            </ul>
-          </div>
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <div class="events-grid">
+            <div class="event-card">
+                <h3>Book Fair 2024</h3>
+                <p><strong>Date:</strong> January 15, 2024</p>
+                <p><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+                <p><strong>Location:</strong> City Library</p>
+                <p>Explore a collection of rare and contemporary books!</p>
+                <button>Register Now</button>
+            </div>
+            <div class="event-card">
+                <h3>Author Meet & Greet</h3>
+                <p><strong>Date:</strong> February 5, 2024</p>
+                <p><strong>Time:</strong> 6:00 PM - 8:00 PM</p>
+                <p><strong>Location:</strong> Town Hall</p>
+                <p>Meet your favorite authors and get signed copies!</p>
+                <button>Register Now</button>
+            </div>
+            <div class="event-card">
+                <h3>Kids Storytelling</h3>
+                <p><strong>Date:</strong> March 10, 2024</p>
+                <p><strong>Time:</strong> 11:00 AM - 1:00 PM</p>
+                <p><strong>Location:</strong> Community Center</p>
+                <p>A fun storytelling session for kids under 12.</p>
+                <button>Register Now</button>
+            </div>
+            <div class="event-card">
+                <h3>Writing Workshop</h3>
+                <p><strong>Date:</strong> April 20, 2024</p>
+                <p><strong>Time:</strong> 2:00 PM - 5:00 PM</p>
+                <p><strong>Location:</strong> Arts Hub</p>
+                <p>Learn writing tips and tricks from professionals!</p>
+                <button>Register Now</button>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock %}
+</body>
+</html>
