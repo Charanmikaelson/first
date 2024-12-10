@@ -3,130 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Power Rangers Trading Card</title>
+    <title>Update book details</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bangers&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Orbitron', sans-serif;
-            background-color: #1a1a2e;
+            background: url('https://source.unsplash.com/1920x1080/?cartoon,sky') center/cover fixed;
             color: #f2f2f2;
-            background-image: url('https://source.unsplash.com/1920x1080/?galaxy');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            background: rgba(0, 123, 255, 0.8); /* Doraemon-themed light blue */
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00; /* Doraemon bell yellow */
+            text-shadow: 0 0 5px #ffcc00;
+        }
+
+        /* Content styling */
         .container {
+            margin: 100px auto;
             width: 90%;
-            max-width: 1200px;
-            margin: 80px auto 0;
-            padding: 20px;
+            max-width: 800px;
+            text-align: center;
         }
 
         h1 {
+            font-family: 'Bangers', cursive;
+            color: #ff0000; /* Doraemon's red bow tie color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Table styling */
+        .table-container {
+            overflow-x: auto; /* Allow horizontal scrolling */
+            max-height: 400px; /* Limit table height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ffffff33;
+            padding: 10px;
             text-align: center;
-            color: #ff0000;
-            font-size: 2.5rem;
-            margin: 30px 0;
-            letter-spacing: 2px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #0b0a0a;
         }
 
-        h2 {
-            color: #ffff00;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        /* Form container */
-        .form-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-            margin: 30px 0;
+        table th {
+            font-weight: bold;
+            background: rgba(0, 123, 255, 0.8); /* Doraemon-themed red */
+            color: white;
         }
 
         /* Form styling */
-        form {
-            background-color: rgba(26, 26, 46, 0.8);
+        .form-container {
+            background: rgba(0, 123, 255, 0.8); /* Doraemon-themed light blue */
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            width: calc(50% - 15px);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        form:hover {
-            transform: translateY(-5px);
+        .form-container h2 {
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        input, select, button {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid #2a2a4a;
-            background-color: rgba(42, 42, 74, 0.6);
-            color: #f2f2f2;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
-        }
-
-        button {
-            background-color: #ff0000;
+        .form-container input, .form-container select, .form-container button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
             border: none;
-            color: #ffff00;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
-        button:hover {
-            background-color: #ffff00;
-            color: #ff0000;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .form-container input, .form-container select {
+            background: #ffffff;
+            color: #333;
+        }
+
+        .form-container button {
+            background: #ffcc00; /* Doraemon bell yellow */
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background: #ffdd33;
+        }
+
+        /* Filter and Sort Form */
+        .filter-sort-form select {
+            margin: 0 10px;
+        }
+
+        /* Table row hover effect */
+        table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Update Power Rangers Trading Card</h1>
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold;">Back to Main Page</a>
+    </div>
+    
+
+    <div class="navbar">
+        <a href="{{ url_for('Home_page') }}">Home</a>
+        <a href="{{ url_for('manage_events') }}">Customer Details</a>
+        <a href="{{ url_for('about') }}">Upcoming Events</a>
+    </div>
+    <div class="form-container">
+        <h1>Update Details</h1>
 
         <form action="{{ url_for('update_event', id=card.id) }}" method="POST">
-            <h2>Update Card Details</h2>
-            <input type="text" name="card_name" placeholder="Card Name" value="{{ card.name }}" required>
+            <h2>Update Book Details</h2>
+            <input type="text" name="card_name" placeholder="book Name" value="{{ card.name }}" required>
             
-            <label for="color">Choose a Color:</label>
+            <label for="color">Choose a Type:</label>
             <select name="color" id="color" required>
-                <option value="red" {% if card.color == 'red' %}selected{% endif %}>Red</option>
-                <option value="blue" {% if card.color == 'blue' %}selected{% endif %}>Blue</option>
+                <option value="educational" {% if card.color == 'educational' %}selected{% endif %}>Educational</option>
+                <option value="not" {% if card.color == 'not' %}selected{% endif %}>Not Educational</option>
                 <!-- Add more options if necessary -->
             </select>
 
-            <input type="number" name="power" placeholder="Power Level" value="{{ card.power }}" required>
+            <input type="number" name="power" placeholder="cost " value="{{ card.power }}" required>
 
-            <input type="text" name="dummy_card" placeholder="Dummy Card Info" value="{{ card.dummy_card }}" required>
+            <input type="text" name="dummy_card" placeholder="name" value="{{ card.dummy_card }}" required>
             
-            <button type="submit">Update Card</button>
+            <button type="submit">Update Details</button>
         </form>
     </div>
 </body>
